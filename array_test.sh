@@ -1,4 +1,4 @@
-#!/bin/bash
+l#!/bin/bash
 
 declare -a nos=(4 -1 2 66 10)
 declare -a names=("ram" "shyam" "hari" "sita" "gita")
