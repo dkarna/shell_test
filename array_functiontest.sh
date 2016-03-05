@@ -12,6 +12,7 @@ declare -a deal_values
 rnum=$(( ( RANDOM % 23 ) + 1 ))
 option='y'
 crdiff=0
+lenarray=${#bj_cards[@]}
  
 function readArray
 {
@@ -21,13 +22,19 @@ function readArray
 			echo  "${bj_cards[$i]} : ${bj_values[$i]}"
 	
 	done
+	
 }
 
 readArray
 
+function shuffleCards
+{
+	#function to shuffle the card
+}
+
 function dealCards
 {
-	echo "Hello"
+	#function to deal the cards
 }
 
 while :
@@ -56,6 +63,8 @@ do
 	else
 		echo "You are at end point"	
 	fi
+
+	
 	
 	echo "Continue(y/n)"
 		read option
