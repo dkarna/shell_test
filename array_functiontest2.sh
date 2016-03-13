@@ -1,0 +1,80 @@
+#! /bin/bash
+
+declare -a namearray=("Anil" "Anup" "Bibek" "Shuvam" "Suman" "Sagar" "Roshlin" l"Krishna" "Roshan" "Saurya" "Kapil")
+declare -a valarray=(1 2 3 4 5 6 7 8 9 10 11)
+
+declare -a randomnames
+option="y"
+choice=0
+num=${#namearray[*]}
+j=0
+
+# start of functions
+
+function displayOptions  # function to display options
+{
+	echo "Your options: "
+	echo "1. Randomize names"
+	echo "2. Original names"
+	echo "3. Exit"
+	echo "Enter your choice (1/2/3):"
+	read choice
+}
+
+function randomizeValues  # function to randomize the values
+{
+	newseq=$( shuf -i 0-$num )
+	for i in $newseq;
+	do
+		randomnames[$j]="${namearray[$i]}"
+		j=`expr $j + 1 `
+	done
+}
+
+function displayOriginalNames  # function to display the original names
+{
+	cnt=${#namearray[*]}
+	for name in ${namearray[@]}
+	do
+		echo "$name"
+	done
+}
+
+function displayRandomizedNames # function to randomize the array values
+{
+	cnt=${#randomnames[*]}  # count the number of values in array
+	for name in ${randomnames[@]}
+	do
+		echo "$name"
+	done
+}
+
+# start of the main part of program
+
+while :
+do
+	#clear
+	displayOptions
+	
+	case "$choice" in 
+		1) randomizeValues
+			displayRandomizedNames
+			;;
+		2) 	displayOriginalNames
+			;;
+		3)	exit
+			;;
+		*) echo "No friendly option"
+			;;
+	esac
+	
+	echo "Continue?(y/n)"
+	read option
+
+	if [[ "$option" = "n" ]]
+	then
+		exit
+	fi
+	j=0
+done
+
