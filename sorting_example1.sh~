@@ -1,33 +1,34 @@
 #! /bin/bash
 
-Unix=('1' '4' '3' '2' '6');
-echo "count: `expr ${#Unix} + 1`"
-cnt=${#Unix}
+clear
+: '
+echo "Enter number of elements: "
+read n
 
-echo "Before sorting: "
-
-for((i=0; i <= cnt; i++)); do
-	echo ${Unix[i]}
+echo "Enter array elements: "
+for ((i=0; i<n; i++))
+do
+	read a[$i]
 done
+'
 
-for((i=0; i <= cnt; i++)); do
-	for((j=$i; j <= cnt; j++)); do
-		if  [ "${Unix[$i]}" -gt "${Unix[$j]}" ] 
+a={1 2 3 4 5}
+
+for ((i=0; i<n; i++))
+do
+	for ((j=$i; j<n; j))
+	do
+		if [ ${a[$i]} -gt ${a[$j]} ]
 		then
-			echo "inside"
-			temp=${Unix[$i]}
-			${Unix[$i]}=${Unix[$j]}
-			${Unix[$j]}=$temp
-		else
-			echo "outside"
+			temp=${a[$i]}
+			a[$i]=${a[$j]}
+			a[$i]=$temp
 		fi
 	done
 done
 
-echo "After sorting: "
-
-for((i=0; i <= cnt; i++)); do
-	echo ${Unix[i]}
+echo "Array after sorting: "
+for ((i=0; i<n; i++))
+do
+	echo ${a[$i]}
 done
-
-echo "Byee.."
