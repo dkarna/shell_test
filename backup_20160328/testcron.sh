@@ -43,10 +43,6 @@ then
 	day_of_week="*"
 fi
 
-#sudo echo "$minutes $hour $day_of_month $month $day_of_week osboxes date >> /home/osboxes/dates.txt" >> /etc/crontab
+sudo echo "$minutes $hour $day_of_month $month $day_of_week osboxes date >> /home/osboxes/dates.txt" >> /etc/crontab
 
-crontab -l >> testcron
-echo "$minutes $hour $day_of_month $month $day_of_week /home/osboxes/ctest.sh" >> testcron
-crontab testcron
-rm testcron
 service cron start    # to start the crontab service
